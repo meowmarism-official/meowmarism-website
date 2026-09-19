@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>Editions - meowmarism docs</title>
+<meta name="description" content="What LITE and PROFESSIONAL share and where they differ.">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/docs.css">
+</head>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>Editions</h1>
+<p class="lead">meowmarism comes in two editions. They look the same, work the same way and share these docs. They differ in how a Minecraft server runs.</p>
+
+<h2>At a glance</h2>
+<table>
+<thead><tr><th></th><th>LITE</th><th>PROFESSIONAL</th></tr></thead>
+<tbody>
+<tr><td>A server runs as</td><td>a process on the host</td><td>a Docker container</td></tr>
+<tr><td>CPU and memory</td><td>Java heap size and process priority</td><td>hard limits for CPU and memory per instance</td></tr>
+<tr><td>Java</td><td>installed and chosen by the panel</td><td>comes with the container image</td></tr>
+<tr><td>Files, mods, backups</td><td colspan="2">the same: plain folders on the host, the same Modrinth, backup and scheduler modules</td></tr>
+<tr><td>Accounts and permissions</td><td colspan="2">the same model</td></tr>
+<tr><td>Price and license</td><td colspan="2">free and open source, same license</td></tr>
+<tr><td>Status</td><td>available</td><td>in development</td></tr>
+</tbody>
+</table>
+<p>Pages in these docs that apply to both editions have no label. Pages for one edition only carry a <strong>LITE</strong> or <strong>PRO</strong> label in the menu.</p>
+
+<h2>Which one should I use</h2>
+<ul>
+<li>You run a few servers for friends or yourself: <a href="/lite/">LITE</a>. It installs with one command and needs no Docker.</li>
+<li>You run many servers, host for others, or need hard limits so one server cannot slow down another: <a href="/professional/">PROFESSIONAL</a>, once it has its first release.</li>
+</ul>
+
+<h2>Where PROFESSIONAL stands today</h2>
+<p>PROFESSIONAL is built separately from LITE and shares its design, its modules and these docs. It does not have every LITE page yet.</p>
+<table>
+<thead><tr><th>Works today</th><th>Comes next</th></tr></thead>
+<tbody>
+<tr><td>Installer that also installs Docker</td><td>Several users with permissions</td></tr>
+<tr><td>Instances as containers (Vanilla, Paper, Purpur, Fabric, NeoForge, Forge)</td><td>Backups, files and mods pages</td></tr>
+<tr><td>Hard CPU and memory limits per instance</td><td>Scheduler</td></tr>
+<tr><td>Console, commands, start, stop, restart, kill</td><td>Updating from the panel</td></tr>
+<tr><td>Owner login with login throttling</td><td>Several hosts under one panel</td></tr>
+</tbody>
+</table>
+<div class="callout note"><b>Note</b><p>Until PROFESSIONAL has a release, only LITE can be installed. See <a href="/docs/getting-started/">Getting started</a>.</p></div>
+
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
+</div>
+<script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
+</body>
+</html>

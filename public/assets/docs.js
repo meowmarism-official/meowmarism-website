@@ -1,9 +1,11 @@
 // Documentation shell: sidebar, breadcrumbs, "on this page", previous/next and search. No build step.
 (() => {
+  // for: 'lite' or 'pro' when a page applies to one edition only, otherwise both
   const MANIFEST = [
     { group: 'Start', items: [
       { t: 'Introduction', p: '/docs/' },
       { t: 'Getting started', p: '/docs/getting-started/' },
+      { t: 'Editions', p: '/docs/editions/' },
     ] },
     { group: 'Using meowmarism', items: [
       { t: 'Instances', p: '/docs/instances/' },
@@ -11,8 +13,13 @@
       { t: 'Mods and plugins', p: '/docs/mods/' },
       { t: 'Backups', p: '/docs/backups/' },
       { t: 'Scheduler and automation', p: '/docs/scheduler/' },
-      { t: 'Startup, Java and limits', p: '/docs/startup/' },
       { t: 'Upgrading a server', p: '/docs/upgrading/' },
+    ] },
+    { group: 'LITE', items: [
+      { t: 'Startup, Java and limits', p: '/docs/startup/', for: 'lite' },
+    ] },
+    { group: 'PROFESSIONAL', items: [
+      { t: 'Docker and limits', p: '/docs/docker/', for: 'pro' },
     ] },
     { group: 'Administration', items: [
       { t: 'Accounts and permissions', p: '/docs/accounts/' },
@@ -25,6 +32,7 @@
       { t: 'Troubleshooting', p: '/docs/troubleshooting/' },
     ] },
   ];
+  const TAG = { lite: 'LITE', pro: 'PRO' };
   const flat = MANIFEST.flatMap((g) => g.items.map((i) => ({ ...i, group: g.group })));
   const norm = (p) => p.replace(/index\.html$/, '').replace(/\/?$/, '/');
   const here = norm(location.pathname);
@@ -41,7 +49,7 @@
   const nav = document.getElementById('docsNav');
   if (nav) {
     nav.innerHTML = `<button class="ds-search" id="dsOpen" type="button">${SEARCH_ICON}<span>Search docs</span><kbd>Ctrl K</kbd></button>`
-      + MANIFEST.map((g) => `<div class="ds-group"><h4>${esc(g.group)}</h4>${g.items.map((i) => `<a href="${i.p}"${i.p === here ? ' class="on" aria-current="page"' : ''}>${esc(i.t)}</a>`).join('')}</div>`).join('');
+      + MANIFEST.map((g) => `<div class="ds-group"><h4>${esc(g.group)}</h4>${g.items.map((i) => `<a href="${i.p}"${i.p === here ? ' class="on" aria-current="page"' : ''}>${esc(i.t)}${i.for ? `<em class="tag">${TAG[i.for]}</em>` : ''}</a>`).join('')}</div>`).join('');
   }
 
   const doc = document.getElementById('doc');
@@ -62,6 +70,10 @@
       crumbs.className = 'crumbs';
       crumbs.innerHTML = `<a href="/docs/">Docs</a> / ${esc(cur.group)}`;
       h1.parentNode.insertBefore(crumbs, h1);
+      const applies = document.createElement('div');
+      applies.className = 'applies';
+      applies.innerHTML = cur.for === 'lite' ? '<span>LITE</span>' : cur.for === 'pro' ? '<span>PROFESSIONAL</span>' : '<span>LITE</span><span>PROFESSIONAL</span>';
+      h1.insertAdjacentElement('afterend', applies);
       document.title = `${cur.t} - meowmarism docs`;
     }
 

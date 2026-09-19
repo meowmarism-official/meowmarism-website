@@ -16,7 +16,7 @@
   <main class="docs-main">
     <article id="doc">
 <h1>Introduction</h1>
-<p class="lead">meowmarism LITE is a control panel for Minecraft servers that runs entirely on your own machine. No account, no cloud, no telemetry.</p>
+<p class="lead">meowmarism is a control panel for Minecraft servers that runs entirely on your own machine. No account, no cloud, no telemetry. It comes as <strong>LITE</strong> and <strong>PROFESSIONAL</strong>, and these docs cover both.</p>
 
 <h2>What it does</h2>
 <p>You install it once with a single command. From your browser you then create servers, start and stop them, watch the console and live statistics, manage mods, take backups, schedule restarts and share access with other people, each with exactly the permissions you choose.</p>
@@ -36,9 +36,9 @@
 </div>
 
 <h2>Editions</h2>
-<p>These docs describe <strong>meowmarism LITE</strong>, the edition you can install today. <a href="/professional/">meowmarism PROFESSIONAL</a> (Docker isolation, real resource limits, several servers) is planned and builds on the same foundations. LITE stays free and open.</p>
+<p><strong>LITE</strong> runs each server as a process on the host and is available today. <strong>PROFESSIONAL</strong> runs each server in a Docker container with hard CPU and memory limits and is in development. They share design, modules and these docs. The <a href="/docs/editions/">Editions</a> page lists what is the same and where they differ.</p>
 
-<h2>Requirements</h2>
+<h2>Requirements (LITE)</h2>
 <table>
 <thead><tr><th>Item</th><th>Needed</th></tr></thead>
 <tbody>
@@ -49,6 +49,7 @@
 <tr><td>Network</td><td>Port 8090 for the panel, plus the port of each Minecraft server (25565 and up).</td></tr>
 </tbody>
 </table>
+<p>PROFESSIONAL also needs Docker. Its installer offers to install it. See <a href="/docs/docker/">Docker and limits</a>.</p>
 
     </article>
     <div id="docsPager"></div>

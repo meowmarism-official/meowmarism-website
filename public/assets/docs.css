@@ -108,4 +108,6 @@ body.docs{font-size:15px;line-height:1.7;}
 .ds-results span{display:block;color:var(--muted);font-size:13px;line-height:1.45;}
 .ds-results mark{background:none;color:var(--accent);font-weight:650;}
 .ds-empty{padding:22px;color:var(--dim);text-align:center;font-size:14px;}
-
+.ds-group a .tag{margin-left:8px;padding:1px 6px;border:1px solid var(--line);border-radius:999px;font-style:normal;font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--dim);vertical-align:1px;}
+.applies{display:flex;flex-wrap:wrap;gap:6px;margin:-4px 0 18px;}
+.applies span{padding:2px 9px;border:1px solid rgba(var(--accent-rgb),.4);border-radius:999px;background:rgba(var(--accent-rgb),.08);color:#ffb3e0;font-size:11px;font-weight:700;letter-spacing:.06em;}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>Docker and limits - meowmarism docs</title>
+<meta name="description" content="How PROFESSIONAL runs servers in containers and limits their CPU and memory.">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/docs.css">
+</head>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>Docker and limits</h1>
+<p class="lead">In meowmarism PROFESSIONAL every instance is its own Docker container, with CPU and memory limits that the host enforces.</p>
+
+<h2>How it works</h2>
+<p>The panel creates one container per instance from the image <code>itzg/minecraft-server</code>. The image handles downloading the server, the loader and Java. The panel picks the image tag with the right Java version for the Minecraft version you chose (Java 8, 17, 21 or 25).</p>
+
+<h2>Where your data is</h2>
+<p>The world and all server files stay in a normal folder on the host, <code>~/meowmarism-pro/instances/&lt;name&gt;</code>, mounted into the container. Files, mods and backups therefore work on plain folders, like in LITE. The files belong to the user that runs the panel, not to root.</p>
+
+<h2>Limits</h2>
+<table>
+<thead><tr><th>Setting</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Memory (MB)</td><td>The Java heap of the server. The container limit is this value plus 768 MB for Java itself and the system, and swap is off.</td></tr>
+<tr><td>CPUs</td><td>How many processor cores the instance may use, in steps of 0.25.</td></tr>
+<tr><td>Port</td><td>The port players connect to. It is published on the host.</td></tr>
+</tbody>
+</table>
+<p>The limits are hard. A server that needs more memory than its limit is stopped by the host and cannot take memory from other instances. The instance page shows current use next to the limit.</p>
+<p>Changing a limit recreates the container. A running server is stopped, the container is replaced and the server starts again. The world and settings are kept.</p>
+
+<h2>Requirements</h2>
+<ul>
+<li>Docker on the host. The installer offers to install it and adds your user to the <code>docker</code> group.</li>
+<li>Enough memory for all instances together: each one needs its heap plus 768 MB.</li>
+</ul>
+
+<h2>Removing an instance</h2>
+<p>Deleting an instance removes its container. You choose whether the world and settings are deleted too. Uninstalling the panel keeps your containers and data unless you explicitly choose to delete them.</p>
+
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
+</div>
+<script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
+</body>
+</html>
