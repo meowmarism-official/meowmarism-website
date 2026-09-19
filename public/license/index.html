@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>license - meowmarism</title>
+<meta name="description" content="License for the meowmarism source code.">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+  #doc{white-space:pre-wrap;color:var(--muted);font-size:13.5px;line-height:1.7;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>License</h1>
+  <p class="updated">Loaded live from <a href="https://github.com/meowmarism-official/meowmarism-lite/blob/master/LICENSE" target="_blank" rel="noopener">LICENSE on GitHub</a>, always in sync with the repo.</p>
+
+  <div id="doc"><p class="loading">Loading the license from GitHub&hellip;</p></div>
+</div>
+
+<script src="/assets/header.js" defer></script>
+<script>
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+fetch('https://raw.githubusercontent.com/meowmarism-official/meowmarism-lite/master/LICENSE')
+  .then((r) => { if (!r.ok) throw new Error(`GitHub responded with ${r.status}`); return r.text(); })
+  .then((text) => { document.getElementById('doc').textContent = text; })
+  .catch((err) => {
+    document.getElementById('doc').innerHTML = `<p class="error">Couldn't load the license from GitHub (${escapeHtml(err.message)}). Read it directly on <a href="https://github.com/meowmarism-official/meowmarism-lite/blob/master/LICENSE" target="_blank" rel="noopener">GitHub</a> instead.</p>`;
+  });
+</script>
+</body>
+</html>

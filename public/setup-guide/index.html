@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>setup guide - meowmarism LITE</title>
+<meta name="description" content="How to install and run meowmarism.">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+  .wrap{width:min(720px,calc(100% - 32px));}
+  .step{margin:32px 0;}
+  .step-num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;
+    border-radius:50%;background:rgba(var(--accent-rgb),.15);color:var(--accent);font-size:12px;font-weight:700;
+    margin-right:9px;position:relative;top:-1px;}
+  .step h2{display:inline;font-size:16px;}
+  pre{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;padding:14px 16px;
+    overflow-x:auto;margin:12px 0 0;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12.5px;
+    line-height:1.75;color:#c9cfdb;white-space:pre-wrap;word-break:break-word;}
+  pre .p{color:var(--dim);}
+  pre .c{color:var(--accent);}
+  table{border-collapse:collapse;margin:10px 0 0;width:100%;font-size:12.5px;}
+  th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;color:var(--muted);vertical-align:top;}
+  th{color:var(--text);font-weight:650;}
+  td code, p code{background:rgba(255,255,255,.06);border-radius:4px;padding:1px 5px;font-size:12px;color:#c9cfdb;
+    font-family:ui-monospace,SFMono-Regular,Consolas,monospace;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Setup guide</h1>
+  <p class="updated">Everything you need to get meowmarism LITE running on your own server.</p>
+
+  <div class="step">
+    <h2><span class="step-num">1</span>Install</h2>
+    <p>On a Linux server (Debian, Ubuntu, Fedora or RHEL-based), run:</p>
+    <pre><span class="p">$</span> curl -fsSL https://raw.githubusercontent.com/meowmarism-official/meowmarism-lite/master/install.sh <span class="c">| bash</span></pre>
+    <p style="margin-top:10px">Nothing needs to be installed beforehand, not even Node.js. The script installs everything it needs, downloads the latest tagged release (not the development branch), installs it to <code>/opt/meowmarism</code>, and sets up a systemd service. Re-running the same command later updates it in place.</p>
+  </div>
+
+  <div class="step">
+    <h2><span class="step-num">2</span>Set a username and password</h2>
+    <p>Before it prints anything else, the installer asks you to create the owner account right there in the terminal. This happens before the panel is ever reachable with no login, not as an afterthought once it's already exposed.</p>
+  </div>
+
+  <div class="step">
+    <h2><span class="step-num">3</span>Open the panel</h2>
+    <p>The installer prints the exact address to open, detected from the machine itself: <code>http://your-server-ip:8090</code>. That's the controller: it lists every instance running on this host, lets you create new ones, and is the only thing that needs a login.</p>
+  </div>
+
+  <div class="step">
+    <h2><span class="step-num">4</span>Create an instance</h2>
+    <p>Click the <code>+</code> button and pick a name, a server type (Vanilla, Paper, Purpur, Fabric, Forge or NeoForge), a Minecraft version and a port. meowmarism downloads and installs the server software for you. Click into the new instance once it's ready to reach its full dashboard: live console, players, mods, backups, and more.</p>
+  </div>
+
+  <div class="step">
+    <h2><span class="step-num">5</span>Configuration (optional)</h2>
+    <p>These environment variables control the installed service. You generally never need to touch them by hand.</p>
+    <table>
+      <thead><tr><th>Variable</th><th>Default</th><th>Applies to</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td><code>CONTROLLER_PORT</code></td><td><code>8090</code></td><td>controller</td><td>Port the instance list listens on</td></tr>
+        <tr><td><code>WORKER_PORT_BASE</code></td><td><code>9090</code></td><td>controller</td><td>First internal port handed out to a worker; each new instance gets the next free one</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin-top:36px">Everything else is in the <a href="/docs/">documentation</a>. The source lives on <a href="https://github.com/meowmarism-official/meowmarism-lite" target="_blank" rel="noopener">GitHub</a>.</p>
+</div>
+
+<script src="/assets/header.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>error - meowmarism</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+  html,body{height:100%;}
+  body{min-height:100vh;display:flex;align-items:center;justify-content:center;}
+  .wrap{width:min(480px,calc(100% - 32px));text-align:center;padding:32px 0;}
+  .code{font-size:clamp(64px,16vw,100px);line-height:.9;font-weight:790;letter-spacing:-.03em;margin:0;
+    position:relative;display:inline-block;}
+  .code .outline{position:absolute;left:0;top:0;z-index:-1;color:transparent;
+    -webkit-text-stroke:1px rgba(var(--accent-rgb),.5);transform:translate(.06em,.06em);}
+  h1{font-size:17px;font-weight:650;margin:18px 0 6px;color:var(--text);}
+  p{color:var(--muted);font-size:13.5px;margin:0 0 28px;}
+  .cta{display:inline-flex;align-items:center;gap:7px;color:var(--accent);text-decoration:none;font-size:13.5px;font-weight:600;}
+  .cta:hover{color:#ff9edd;}
+  .cta svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;position:relative;top:.5px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="code" aria-hidden="true">500<span class="outline">500</span></div>
+  <h1>Something broke on this end</h1>
+  <p>Not you. The server. Try again in a moment.</p>
+  <a class="cta" href="/">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    back to meowmarism
+  </a>
+</div>
+<script src="/assets/header.js" defer></script>
+</body>
+</html>
