@@ -9,6 +9,8 @@
   ];
   const style = document.createElement('style');
   style.textContent = `
+html,*{scrollbar-width:none}
+*::-webkit-scrollbar{display:none}
 .topnav{position:relative;z-index:50;background:transparent}
 .topnav-in{width:min(1040px,calc(100% - 32px));height:60px;margin:0 auto;display:flex;align-items:center;gap:26px}
 .topnav .logo{display:flex;align-items:center;flex:0 0 auto}
