@@ -1,7 +1,7 @@
 {
   "core": "meowmarism-core",
   "version": "0.0.0",
-  "commit": "49db0d4397dc3cb8dc26e2cc0fee83d0452b4e7f",
+  "commit": "ea15cd7cd8f61def482ad7a2b69e26ce266457bc",
   "files": [
     "LICENSE",
     "BRAND-POLICY.md"
