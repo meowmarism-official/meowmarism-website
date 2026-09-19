@@ -103,8 +103,7 @@
     const pager = document.getElementById('docsPager');
     if (pager && cur) {
       const prev = flat[idx - 1], next = flat[idx + 1];
-      pager.innerHTML = `<div class="pager">${prev ? `<a class="prev" href="${prev.p}"><small>Previous</small>${esc(prev.t)}</a>` : '<span></span>'}${next ? `<a class="next" href="${next.p}"><small>Next</small>${esc(next.t)}</a>` : ''}</div>`
-        + `<div class="editlink"><a href="https://github.com/meowmarism-official/meowmarism-website/edit/master/public${cur.p}index.html" target="_blank" rel="noopener">Edit this page on GitHub</a></div>`;
+      pager.innerHTML = `<div class="pager">${prev ? `<a class="prev" href="${prev.p}"><small>Previous</small>${esc(prev.t)}</a>` : '<span></span>'}${next ? `<a class="next" href="${next.p}"><small>Next</small>${esc(next.t)}</a>` : ''}</div>`;
     }
   }
 

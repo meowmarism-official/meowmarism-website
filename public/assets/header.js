@@ -11,7 +11,8 @@
   style.textContent = `
 html,*{scrollbar-width:none}
 *::-webkit-scrollbar{display:none}
-.topnav{position:relative;z-index:50;background:transparent}
+.topnav{position:sticky;top:0;z-index:50;align-self:stretch;background:transparent;transition:background .15s}
+.topnav.stuck{background:rgba(6,9,15,.86);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .topnav-in{width:min(1040px,calc(100% - 32px));height:60px;margin:0 auto;display:flex;align-items:center;gap:26px}
 .topnav .logo{display:flex;align-items:center;flex:0 0 auto}
 .topnav .logo img{height:26px;width:auto;display:block}
@@ -22,7 +23,9 @@ html,*{scrollbar-width:none}
 .topnav nav a svg{width:11px;height:11px;margin-left:4px;vertical-align:-1px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
 .topnav .short{display:none}
 @media (max-width:520px){.topnav .full{display:none}.topnav .short{display:inline}.topnav nav{gap:16px}}
-.sitefoot{position:relative;z-index:2;width:min(1040px,calc(100% - 32px));margin:56px auto 0;padding:18px 0 34px;border-top:1px solid rgba(255,255,255,.08);color:#5f6878;font-size:12px;line-height:1.6;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{min-height:100vh;display:flex;flex-direction:column}
+body>*{flex-shrink:0}
+.sitefoot{position:relative;z-index:2;width:min(1040px,calc(100% - 32px));margin:56px auto 0;margin-top:auto;padding:18px 0 34px;border-top:1px solid rgba(255,255,255,.08);color:#5f6878;font-size:12px;line-height:1.6;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 .sitefoot .links{margin-top:10px;display:flex;gap:14px;flex-wrap:wrap}
 .sitefoot a{color:#9aa3b2;text-decoration:none;font-size:12px}
 .sitefoot a:hover{color:#ff6fc4}
@@ -35,6 +38,9 @@ html,*{scrollbar-width:none}
   nav.className = 'topnav';
   nav.innerHTML = `<div class="topnav-in"><a class="logo" href="/" aria-label="meowmarism"><img src="/assets/favicon.svg" alt=""></a><nav>${links.map((l) => `<a href="${l.href}"${l.external ? ' target="_blank" rel="noopener"' : ''}${on(l) ? ' class="on"' : ''}>${l.short ? `<span class="full">${l.label}</span><span class="short">${l.short}</span>` : l.label}${l.external ? '<svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><polyline points="8 7 17 7 17 16"/></svg>' : ''}</a>`).join('')}</nav></div>`;
   document.body.insertBefore(nav, document.body.firstChild);
+  const onScroll = () => nav.classList.toggle('stuck', window.scrollY > 4);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
   const foot = document.createElement('footer');
   foot.className = 'sitefoot';

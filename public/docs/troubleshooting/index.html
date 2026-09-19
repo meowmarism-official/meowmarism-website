@@ -30,8 +30,8 @@
 <h2>The port is already in use</h2>
 <p>Another instance or another program uses the Minecraft port. Change <code>server-port</code> on the <strong>Settings</strong> page, or stop the other program. <code>ss -ltnp | grep 25565</code> shows what listens on a port.</p>
 
-<h2>The update will not start</h2>
-<p>By default all Minecraft servers must be stopped first, and the message names the running ones. Stop them, or switch the rule off on the panel's Settings page. See <a href="/docs/updating/">Updating meowmarism</a>.</p>
+<h2>The update stops my servers</h2>
+<p>meowmarism recommends stopping all servers before an update. If you continue anyway, the panel stops the running servers, waits until they have saved and shut down, installs the update and starts them again. Choose <strong>Cancel</strong> to stop the update. See <a href="/docs/updating/">Updating meowmarism</a>.</p>
 
 <h2>I cannot reach the panel from another computer</h2>
 <ul>
@@ -47,12 +47,9 @@
 <p>Open <strong>Manage users</strong>, edit the account and set a new password.</p>
 
 <h2>I forgot the owner password</h2>
-<p>There is no reset button for the owner yet. As the user that runs the service, stop it, replace the owner and start it again. Members and instances are kept:</p>
-<pre>sudo systemctl stop meowmarism
-cd /opt/meowmarism/panel
-node -e "const fs=require('fs'),os=require('os'),path=require('path');const f=path.join(os.homedir(),'.meowmarism-controller-users.json');fs.writeFileSync(f,JSON.stringify(JSON.parse(fs.readFileSync(f,'utf8')).filter(u=>u.role!=='owner')),{mode:0o600});console.log(require('./lib/db.js').createUserStore(f).upsertOwner('NEWNAME','NEWPASSWORD'))"
-sudo systemctl start meowmarism</pre>
-<p>It prints <code>true</code> when the new owner was created. Run it as the same user as the service, because the accounts file lives in that user's home directory.</p>
+<p>Run the installer again with <code>--reset-owner</code>. It asks for a new owner username and password, signs everyone out and restarts the panel. Instances, members and settings are kept:</p>
+<pre>curl -fsSL https://raw.githubusercontent.com/meowmarism-official/meowmarism-lite/master/install.sh | bash -s -- --reset-owner</pre>
+<p>The installer also updates the panel to the newest release, like any re-run.</p>
 
 <h2>Still stuck?</h2>
 <p>Look at the console of the instance and <code>journalctl -u meowmarism</code>, then open an issue on <a href="https://github.com/meowmarism-official/meowmarism-lite/issues" target="_blank" rel="noopener">GitHub</a> with the message you see.</p>

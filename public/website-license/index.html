@@ -6,32 +6,18 @@
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <meta name="theme-color" content="#06090f">
 <title>website license - meowmarism</title>
-<meta name="description" content="License for the meowmarism website.">
+<meta name="description" content="The Meowmarism Website License 1.0 for this website.">
 <link rel="stylesheet" href="/assets/site.css">
-<style>
-  #doc{white-space:pre-wrap;color:var(--muted);font-size:13.5px;line-height:1.7;}
-</style>
+<link rel="stylesheet" href="/assets/legal.css">
 </head>
 <body>
-<div class="wrap">
-  <h1>Website License</h1>
-  <p class="updated">Loaded live from <a href="https://github.com/meowmarism-official/meowmarism-website/blob/master/LICENSE" target="_blank" rel="noopener">LICENSE on GitHub</a>, always in sync with the repo.</p>
-
-  <p class="updated" style="margin-top:-6px">Also: <a href="/license">Software License</a> · <a href="/website-license">Website License</a> · <a href="/brand">Brand Policy</a></p>
-  <div id="doc"><p class="loading">Loading the website license from GitHub&hellip;</p></div>
+<div class="lwrap">
+  <div class="lhead"><h1>Website License</h1><p>The Meowmarism Website License 1.0 for this website.</p></div>
+  <nav class="ltabs"><a href="/license/">Software License</a><a href="/website-license/" class="on">Website License</a><a href="/brand/">Brand Policy</a></nav>
+  <div id="legal" data-src="https://raw.githubusercontent.com/meowmarism-official/meowmarism-website/master/LICENSE" data-gh="https://github.com/meowmarism-official/meowmarism-website/blob/master/LICENSE"><p class="loading">Loading from GitHub&hellip;</p></div>
+  <p class="lsrc">Loaded live from <a href="https://github.com/meowmarism-official/meowmarism-website/blob/master/LICENSE" target="_blank" rel="noopener">GitHub</a>, always in sync with the repository.</p>
 </div>
-
 <script src="/assets/header.js" defer></script>
-<script>
-function escapeHtml(s) {
-  return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-}
-fetch('https://raw.githubusercontent.com/meowmarism-official/meowmarism-website/master/LICENSE')
-  .then((r) => { if (!r.ok) throw new Error(`GitHub responded with ${r.status}`); return r.text(); })
-  .then((text) => { document.getElementById('doc').textContent = text; })
-  .catch((err) => {
-    document.getElementById('doc').innerHTML = `<p class="error">Couldn't load the website license from GitHub (${escapeHtml(err.message)}). Read it directly on <a href="https://github.com/meowmarism-official/meowmarism-website/blob/master/LICENSE" target="_blank" rel="noopener">GitHub</a> instead.</p>`;
-  });
-</script>
+<script src="/assets/legal.js" defer></script>
 </body>
 </html>

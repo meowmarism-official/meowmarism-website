@@ -41,6 +41,10 @@
 
 <div class="callout note"><b>Note</b><p>Reaching the panel from the internet? Read <a href="/docs/https/">HTTPS and internet access</a> first. The panel speaks plain HTTP by itself.</p></div>
 
+<h2>Installer options</h2>
+<p><code>--reset-owner</code> sets a new owner username and password on an existing install, for example when the password is lost. It signs everyone out. Instances and members are kept.</p>
+<pre>curl -fsSL https://raw.githubusercontent.com/meowmarism-official/meowmarism-lite/master/install.sh | bash -s -- --reset-owner</pre>
+
 <h2>What was installed</h2>
 <table>
 <thead><tr><th>Where</th><th>What</th></tr></thead>

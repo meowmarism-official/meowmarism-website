@@ -1,0 +1,28 @@
+.lwrap{width:min(1040px,calc(100% - 32px));margin:0 auto;padding:22px 0 20px;}
+.lhead h1{margin:0 0 8px;font-size:clamp(30px,5vw,44px);letter-spacing:-.035em;line-height:1.05;}
+.lhead p{margin:0;color:var(--muted);font-size:15px;max-width:640px;}
+.ltabs{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 34px;}
+.ltabs a{padding:7px 14px;border:1px solid var(--line);border-radius:999px;color:var(--muted);text-decoration:none;font-size:13.5px;}
+.ltabs a:hover{color:var(--text);border-color:rgba(255,255,255,.22);}
+.ltabs a.on{color:#ffb3e0;border-color:rgba(var(--accent-rgb),.5);background:rgba(var(--accent-rgb),.1);}
+#legal{display:grid;grid-template-columns:210px minmax(0,1fr);gap:48px;align-items:start;}
+.ltoc{position:sticky;top:74px;display:flex;flex-direction:column;gap:1px;font-size:13px;max-height:calc(100vh - 100px);overflow-y:auto;}
+.ltoc b{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:0 0 8px;}
+.ltoc a{display:flex;gap:9px;padding:5px 8px;border-radius:7px;color:var(--muted);text-decoration:none;line-height:1.35;}
+.ltoc a span{color:var(--dim);min-width:18px;font-variant-numeric:tabular-nums;}
+.ltoc a:hover{color:var(--text);background:rgba(255,255,255,.04);}
+.lbody{max-width:720px;font-size:15px;line-height:1.75;color:var(--muted);}
+.lmeta{color:var(--dim);font-size:13px;margin:0 0 6px;}
+.lbody h2{display:flex;align-items:baseline;gap:12px;margin:44px 0 12px;padding-top:24px;border-top:1px solid var(--line);font-size:21px;letter-spacing:-.02em;color:var(--text);scroll-margin-top:76px;}
+.lbody h2 .num{color:var(--accent);font-size:14px;font-weight:700;min-width:26px;}
+.lbody h3{margin:26px 0 8px;font-size:16px;color:var(--text);}
+.lbody p{margin:0 0 14px;}
+.lbody ul,.lbody ol{margin:0 0 16px;padding-left:22px;}
+.lbody li{margin:0 0 6px;}
+.lbody li::marker{color:var(--accent);}
+.lbody blockquote{margin:0 0 16px;padding:12px 16px;border-left:3px solid var(--accent);background:rgba(var(--accent-rgb),.06);border-radius:0 10px 10px 0;color:#d6dbe6;}
+.lbody strong{color:var(--text);}
+.lbody code{padding:1px 6px;border-radius:5px;background:rgba(255,255,255,.06);font-size:.9em;}
+.lsrc{margin:40px 0 0;font-size:13px;color:var(--dim);}
+.lsrc a{color:var(--dim);}
+@media (max-width:820px){#legal{grid-template-columns:minmax(0,1fr);gap:20px}.ltoc{position:static;max-height:none;flex-direction:row;flex-wrap:wrap;gap:4px}.ltoc b{width:100%}.ltoc a{padding:4px 9px;border:1px solid var(--line)}}
