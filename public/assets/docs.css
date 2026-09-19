@@ -55,7 +55,7 @@ body.docs{font-size:15px;line-height:1.7;}
 .pre-copy:hover{color:var(--text);}
 .pre-copy.copied{color:var(--accent);opacity:1;}
 .pre-copy svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-#doc table{border-collapse:separate;border-spacing:0;width:100%;margin:14px 0 22px;font-size:13.5px;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:block;overflow-x:auto;}
+#doc table{border-collapse:separate;border-spacing:0;width:max-content;max-width:100%;margin:14px 0 22px;font-size:13.5px;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:block;overflow-x:auto;}
 #doc th,#doc td{padding:9px 13px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);color:#b4bccb;}
 #doc th{background:rgba(255,255,255,.035);color:var(--text);font-weight:650;white-space:nowrap;}
 #doc tr:last-child td{border-bottom:0;}

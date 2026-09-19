@@ -34,7 +34,7 @@
 <pre>~/meowmarism/backups/&lt;instance&gt;/world-2026-01-01T04-00-00-000Z.tar.zst</pre>
 <p>Backups are outside the instance folder, so they survive when you delete an instance (unless you choose to delete them too). They use zstd compression when it is installed, otherwise gzip.</p>
 
-<div class="callout warn"><b>What is not covered</b><p>Only the <code>world</code> folder is backed up. Servers that keep separate world folders (some Paper setups) need those backed up another way. Backups also need at least 2 GB of free disk space.</p></div>
+<div class="callout warn"><b>What is not covered</b><p>Only the <code>world</code> folder is backed up. Servers that keep separate world folders (some Paper setups) need those backed up another way. Before every backup the panel estimates the size of the world and skips the backup if less than the reserve would stay free afterwards. The reserve is 5 GB by default and can be changed per instance under <strong>Keep GB free</strong> in the backup settings.</p></div>
 
     </article>
     <div id="docsPager"></div>
