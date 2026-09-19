@@ -41,9 +41,12 @@
 
 <div class="callout note"><b>Note</b><p>Reaching the panel from the internet? Read <a href="/docs/https/">HTTPS and internet access</a> first. The panel speaks plain HTTP by itself.</p></div>
 
-<h2>Installer options</h2>
-<p><code>--reset-owner</code> sets a new owner username and password on an existing install, for example when the password is lost. It signs everyone out. Instances and members are kept.</p>
-<pre>curl -fsSL https://raw.githubusercontent.com/meowmarism-official/meowmarism-lite/master/install.sh | bash -s -- --reset-owner</pre>
+<h2>Running the installer again</h2>
+<p>Run the same command on a server that already has meowmarism and it finds the install. It offers <strong>U</strong> to update (only when a newer release exists), <strong>M</strong> for more options and <strong>C</strong> to cancel. <strong>M</strong> opens a second choice:</p>
+<ul>
+<li><strong>O</strong>: owner reset. Set a new owner username and password, for example when the password is lost. Everyone is signed out. Instances and members are kept.</li>
+<li><strong>R</strong>: remove meowmarism, see <a href="/docs/uninstall/">Uninstall</a>.</li>
+</ul>
 
 <h2>What was installed</h2>
 <table>

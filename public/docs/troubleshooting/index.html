@@ -47,9 +47,8 @@
 <p>Open <strong>Manage users</strong>, edit the account and set a new password.</p>
 
 <h2>I forgot the owner password</h2>
-<p>Run the installer again with <code>--reset-owner</code>. It asks for a new owner username and password, signs everyone out and restarts the panel. Instances, members and settings are kept:</p>
-<pre>curl -fsSL https://raw.githubusercontent.com/meowmarism-official/meowmarism-lite/master/install.sh | bash -s -- --reset-owner</pre>
-<p>The installer also updates the panel to the newest release, like any re-run.</p>
+<p>Run the install command again on the server. When it finds the existing install, press <strong>M</strong> for more options, then <strong>O</strong> for owner reset. It asks for a new owner username and password, signs everyone out and restarts the panel. Instances, members and settings are kept:</p>
+<pre>curl -fsSL https://raw.githubusercontent.com/meowmarism-official/meowmarism-lite/master/install.sh | bash</pre>
 
 <h2>Still stuck?</h2>
 <p>Look at the console of the instance and <code>journalctl -u meowmarism</code>, then open an issue on <a href="https://github.com/meowmarism-official/meowmarism-lite/issues" target="_blank" rel="noopener">GitHub</a> with the message you see.</p>
