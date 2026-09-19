@@ -6,7 +6,7 @@
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <meta name="theme-color" content="#06090f">
 <title>meowmarism</title>
-<meta name="description" content="Self-hosted Minecraft server panel.">
+<meta name="description" content="meowmarism: self-hosted control panels for Minecraft servers. Live console, mods, backups and permissions, on your own hardware.">
 <style>
   *{box-sizing:border-box;}
   :root{
@@ -45,6 +45,11 @@
 
   h2{margin:74px 0 0;font-size:22px;font-weight:720;letter-spacing:-.02em;}
   .sub{margin:8px 0 0;color:var(--muted);font-size:14.5px;}
+  .shot{display:block;width:100%;height:auto;margin:22px 0 0;border:1px solid var(--line);border-radius:12px;position:relative;z-index:1;}
+  .points{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px;position:relative;z-index:1;}
+  .points li{color:var(--muted);font-size:14.5px;line-height:1.55;}
+  .points b{display:block;color:var(--text);font-weight:650;margin-bottom:2px;}
+  @media (max-width:560px){.points{grid-template-columns:minmax(0,1fr);}}
 
   .list{display:grid;gap:14px;margin-top:22px;grid-template-columns:1fr 1fr;}
 
@@ -175,6 +180,16 @@
       </path>
     </svg>
   </h1>
+
+  <h2>What is meowmarism?</h2>
+  <p class="sub">A control panel for Minecraft servers that runs on your own hardware. Create servers, watch the live console and statistics, install mods, take backups, schedule restarts and share access, all from your browser.</p>
+  <img class="shot" src="/assets/shots/overview.webp" width="1400" height="600" alt="The meowmarism dashboard of a running server with status, a live CPU and memory chart and runtime details" loading="lazy">
+  <ul class="points">
+    <li><b>Live console</b>Server output and commands in real time.</li>
+    <li><b>Statistics</b>CPU, memory, disk and network, with a history of seven days.</li>
+    <li><b>Mods and backups</b>Install from Modrinth, back up and restore worlds.</li>
+    <li><b>Access for others</b>Accounts with exactly the permissions you give.</li>
+  </ul>
 
   <h2>Choose your edition</h2>
   <p class="sub">meowmarism is a family of self-hosted control panels for Minecraft servers. Your hardware, your data, no cloud and no telemetry.</p>
