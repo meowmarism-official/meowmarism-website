@@ -1,0 +1,10 @@
+{
+  "core": "meowmarism-core",
+  "version": "0.0.0",
+  "commit": "0d60a876a582e628819cabe02ffaba84dbe5e872",
+  "files": [
+    "LICENSE",
+    "CONTRIBUTOR-AGREEMENT.md",
+    "CONTRIBUTORS.md"
+  ]
+}
