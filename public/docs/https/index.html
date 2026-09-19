@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>HTTPS and internet access - meowmarism docs</title>
+<meta name="description" content="Put the panel behind a reverse proxy with HTTPS.">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/docs.css">
+</head>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>HTTPS and internet access</h1>
+<p class="lead">The panel speaks plain HTTP. For anything reachable from the internet, terminate HTTPS in front of it.</p>
+
+<div class="callout warn"><b>Important</b><p>Over plain HTTP, passwords and sessions can be read by anyone on the path. The panel shows a warning when it is opened over HTTP on a public address.</p></div>
+
+<h2>1. Listen on localhost and trust the proxy</h2>
+<p>At install time:</p>
+<pre>MEOWMARISM_HOST=127.0.0.1 MEOWMARISM_TRUST_PROXY=1 bash install.sh</pre>
+<p>Alternatively add both as <code>Environment=</code> lines to the service, or switch on <strong>This panel runs behind an HTTPS reverse proxy</strong> on the panel's Settings page.</p>
+<p>With the proxy setting on, the session cookie is <code>Secure</code>, HSTS is sent and login protection uses the real client IP from <code>X-Forwarded-For</code>. Only enable it when a proxy really sets those headers.</p>
+
+<h2>2. Caddy</h2>
+<p>Caddy gets and renews certificates by itself.</p>
+<pre>panel.example.com {
+    reverse_proxy 127.0.0.1:8090
+}</pre>
+
+<h2>3. nginx</h2>
+<pre>location / {
+    proxy_pass http://127.0.0.1:8090;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_http_version 1.1;
+    proxy_buffering off;
+}</pre>
+<p><code>proxy_buffering off</code> matters: the live console and statistics use server-sent events.</p>
+
+<h2>Minecraft ports</h2>
+<p>The reverse proxy only covers the panel. Players still connect directly to each server's Minecraft port, so open those ports in your firewall.</p>
+
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
+</div>
+<script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
+</body>
+</html>

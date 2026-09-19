@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>Mods and plugins - meowmarism docs</title>
+<meta name="description" content="Install and update mods and plugins from Modrinth.">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/docs.css">
+</head>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>Mods and plugins</h1>
+<p class="lead">Search Modrinth, install with required dependencies and keep everything up to date, without touching SSH.</p>
+
+<p>The <strong>Mods</strong> page has three tabs: <strong>Installed</strong>, <strong>Browse Modrinth</strong> and <strong>Updates</strong>. Paper and Purpur servers use the <code>plugins</code> folder, all other types use <code>mods</code>. Vanilla servers have neither.</p>
+
+<h2>Installed</h2>
+<p>Lists every jar in the folder and lets you disable or enable it. Disabled files move to <code>disabled_mods</code> and are not loaded. Changes take effect after a server restart.</p>
+
+<h2>Browse Modrinth</h2>
+<p>The search only shows projects that are compatible with the instance's Minecraft version and loader. <strong>Install</strong> takes the newest release and adds required dependencies automatically. <strong>Versions</strong> lets you pick a specific version instead.</p>
+
+<h2>Updates</h2>
+<p>Installed files are identified by their hash, so mods you added by hand are found too. The tab shows:</p>
+<ul>
+<li>mods that have a newer release, with <strong>Update</strong> and <strong>Update all</strong>;</li>
+<li>mods that have <strong>no compatible version</strong> for this server;</li>
+<li>files that are not on Modrinth and therefore not checked.</li>
+</ul>
+<p>Replaced files move to <code>mods-old</code> (or <code>plugins-old</code>) instead of being deleted, so you can go back.</p>
+
+<div class="callout note"><b>Safety</b><p>Downloads are only accepted from Modrinth's CDN and are checked against their SHA-512 and size. A file that fails the check is discarded.</p></div>
+
+<h2>Permissions</h2>
+<p>Installing and updating needs the <em>mods</em> permission on the instance.</p>
+
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
+</div>
+<script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
+</body>
+</html>

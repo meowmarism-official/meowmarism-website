@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>Instances - meowmarism docs</title>
+<meta name="description" content="Server types, ports, Java, autostart and removing an instance.">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/docs.css">
+</head>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>Instances</h1>
+<p class="lead">An instance is one Minecraft server with its own process, console, statistics and backups.</p>
+
+<h2>Server types</h2>
+<table>
+<thead><tr><th>Type</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Vanilla</td><td>The official server jar from Mojang.</td></tr>
+<tr><td>Paper</td><td>The newest build for the chosen version. Uses plugins.</td></tr>
+<tr><td>Purpur</td><td>The newest build for the chosen version. Uses plugins.</td></tr>
+<tr><td>Fabric</td><td>You pick the loader version.</td></tr>
+<tr><td>Forge</td><td>You pick the loader version. The installer runs for you.</td></tr>
+<tr><td>NeoForge</td><td>You pick the loader version. The installer runs for you.</td></tr>
+</tbody>
+</table>
+
+<h2>Creating an instance</h2>
+<p>Click <code>+</code> on the server list. The assistant asks for:</p>
+<ul>
+<li><strong>Name</strong>: letters and digits. If the name exists, a number is appended.</li>
+<li><strong>Server type and Minecraft version</strong> (and the loader version where needed).</li>
+<li><strong>Port</strong>: see below.</li>
+<li><strong>Memory</strong>: handed to the JVM. Leave room for the operating system and other instances.</li>
+<li><strong>Autostart</strong>: start the server whenever the panel starts.</li>
+<li><strong>Backup interval</strong> and how many backups to keep.</li>
+</ul>
+<p>A progress view shows the download and installation. When it finishes, the instance appears in the list.</p>
+
+<h2>Ports</h2>
+<p>The assistant suggests a free port starting at 25565. A port is <strong>not free</strong> when another instance uses it or when another program is already listening on it. If you type a taken port, the next free one is used and you are told. When a server is started and its port is busy, it does not start and the console explains why.</p>
+
+<h2>Java</h2>
+<p>Each Minecraft version needs a minimum Java version. If the host has an older one, meowmarism downloads the right runtime (Temurin) into <code>~/meowmarism/java/&lt;version&gt;</code> and uses it for that instance only, without touching the system Java. See <a href="/docs/startup/">Startup, Java and limits</a>.</p>
+
+<h2>Icon and MOTD</h2>
+<p>New servers get the meowmarism icon and the MOTD <code>hosted by meowmarism :3</code>. Change the icon on the instance's <strong>Settings</strong> page (any image, scaled to 64 by 64) and the MOTD in <code>server.properties</code>. Restart the server to apply either.</p>
+
+<h2>Where files live</h2>
+<pre>~/meowmarism/instances/&lt;name&gt;/   world, mods, server.properties, ...
+~/meowmarism/backups/&lt;name&gt;/     world backups
+~/meowmarism/java/&lt;version&gt;/     Java runtimes installed by meowmarism</pre>
+
+<h2>Managing an instance</h2>
+<p>The <strong>Manage</strong> page inside an instance holds everything about the instance itself: startup options (memory, JVM flags, Java, CPU and RAM limits, autostart), the server software card for upgrades, and the danger zone.</p>
+
+<h2>Deleting an instance</h2>
+<p>Open <strong>Manage</strong> and use <strong>Delete instance...</strong> in the danger zone. This removes the instance from the panel and deletes its folder with the world, mods and configuration. You must type the instance name to confirm, and you can choose to delete its backups too. The Minecraft server has to be stopped first.</p>
+<div class="callout warn"><b>Careful</b><p>This cannot be undone. The panel refuses to delete a folder that contains the panel itself, your home directory, or something that does not look like a Minecraft server.</p></div>
+
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
+</div>
+<script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
+</body>
+</html>

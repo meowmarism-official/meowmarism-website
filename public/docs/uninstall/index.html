@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>Uninstall - meowmarism docs</title>
+<meta name="description" content="Remove the panel, and optionally your data.">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/docs.css">
+</head>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>Uninstall</h1>
+<p class="lead">Removing the panel and removing your servers are two separate, explicitly confirmed steps.</p>
+
+<p>Run the installer again and choose <code>Remove</code>:</p>
+<pre>curl -fsSL https://raw.githubusercontent.com/meowmarism-official/meowmarism-lite/master/install.sh | bash</pre>
+
+<ol class="steps">
+<li><strong>Removing the panel</strong><p>It lists what will happen (the service is stopped and deleted, the panel files are removed, running Minecraft servers are stopped) and your instances. You must type <code>remove</code> to continue.</p></li>
+<li><strong>Removing your data (optional)</strong><p>Your instances, backups and accounts are only deleted if you additionally type <code>delete everything</code>. Anything else keeps them.</p></li>
+</ol>
+<div class="callout warn"><b>Careful</b><p>Deleting data removes worlds, mods, configurations, backups and accounts permanently.</p></div>
+
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
+</div>
+<script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
+</body>
+</html>

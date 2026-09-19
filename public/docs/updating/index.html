@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>Updating meowmarism - meowmarism docs</title>
+<meta name="description" content="Update the panel from the panel and what protects you while it happens.">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/docs.css">
+</head>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>Updating meowmarism</h1>
+<p class="lead">Update from the Update page. The old version stays until the new one has proven itself.</p>
+
+<h2>From the panel</h2>
+<p>The <strong>Update</strong> page shows the installed and the newest release. A yellow dot on the Update icon in the sidebar tells you when a newer one is available. The panel checks every five minutes, and <strong>Check for updates</strong> checks immediately. Press <strong>Update now</strong>.</p>
+
+<h2>Servers must be stopped</h2>
+<p>By default the update only starts when no Minecraft server is running, and it tells you which ones are. You can switch this off on the panel's <strong>Settings</strong> page. Then running servers are stopped briefly and started again afterwards.</p>
+
+<h2>Safety net</h2>
+<ol class="steps">
+<li><strong>Download and syntax check</strong><p>The release is downloaded and every script is checked before anything changes.</p></li>
+<li><strong>Start test</strong><p>The new version is started on a spare port with no instances attached. If it does not answer within 25 seconds, the old version stays and your servers are started again.</p></li>
+<li><strong>Old version kept</strong><p>After the swap the old version stays on disk. Only after the new one has run healthily for a minute is it removed.</p></li>
+<li><strong>Crash guard</strong><p>If the new version keeps crashing on startup, the old one is swapped back in automatically.</p></li>
+</ol>
+<p>If a rollback happened, the Update page tells you why.</p>
+
+<h2>From the terminal</h2>
+<p>Run the installer again. It compares the installed and the latest version and only offers <em>Update</em> when they differ. Remove is offered as well.</p>
+
+<h2>What is kept</h2>
+<p>An update replaces only the panel program. Instances, backups, accounts and settings are not touched.</p>
+
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
+</div>
+<script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
+</body>
+</html>

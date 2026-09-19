@@ -5,144 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <meta name="theme-color" content="#06090f">
-<title>docs - meowmarism LITE</title>
-<meta name="description" content="Documentation for meowmarism, a self-hosted control panel for Minecraft servers.">
+<title>Introduction - meowmarism docs</title>
+<meta name="description" content="What meowmarism LITE is and how the documentation is organised.">
 <link rel="stylesheet" href="/assets/site.css">
-<style>
-  .wrap{width:min(780px,calc(100% - 32px));padding-top:44px;}
-  .toc{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0 0 34px;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.02);}
-  .toc a{color:var(--muted);text-decoration:none;font-size:13px;}
-  .toc a:hover{color:var(--text);}
-  section{scroll-margin-top:76px;}
-  pre{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto;margin:12px 0;
-    font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12.5px;line-height:1.75;color:#c9cfdb;white-space:pre-wrap;word-break:break-word;}
-  table{border-collapse:collapse;margin:10px 0 14px;width:100%;font-size:12.5px;}
-  th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;color:var(--muted);vertical-align:top;}
-  th{color:var(--text);font-weight:650;}
-  h2{margin-top:38px;}
-</style>
+<link rel="stylesheet" href="/assets/docs.css">
 </head>
-<body>
-<div class="wrap">
-  <h1>Documentation</h1>
-  <p class="updated">How meowmarism LITE works and what it can do. New here? Start with the <a href="/setup-guide/">setup guide</a>.</p>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>Introduction</h1>
+<p class="lead">meowmarism LITE is a control panel for Minecraft servers that runs entirely on your own machine. No account, no cloud, no telemetry.</p>
 
-  <div class="toc">
-    <a href="#overview">Overview</a><a href="#instances">Instances</a><a href="#dashboard">Dashboard</a><a href="#mods">Mods and plugins</a>
-    <a href="#backups">Backups</a><a href="#scheduler">Scheduler</a><a href="#startup">Startup and limits</a><a href="#upgrade">Upgrading a server</a>
-    <a href="#accounts">Accounts</a><a href="#updates">Updating the panel</a><a href="#https">HTTPS</a><a href="#config">Configuration</a><a href="#uninstall">Uninstall</a>
-  </div>
+<h2>What it does</h2>
+<p>You install it once with a single command. From your browser you then create servers, start and stop them, watch the console and live statistics, manage mods, take backups, schedule restarts and share access with other people, each with exactly the permissions you choose.</p>
 
-  <section id="overview">
-    <h2>Overview</h2>
-    <p>meowmarism is a control panel for Minecraft servers that runs entirely on your own machine. There is no account, no cloud and no telemetry. It is plain Node.js with no framework and no database.</p>
-    <p>One <strong>controller</strong> listens on a single port (8090 by default). It starts one small <strong>worker</strong> process per instance, and every instance is reachable through the controller under <code>/instance/&lt;name&gt;/</code>. The Minecraft servers themselves are separate processes that the worker starts and stops. Restarting the panel does not touch a running server's settings, and stopping a server never stops the panel.</p>
-  </section>
+<h2>How it works</h2>
+<p>One <strong>controller</strong> listens on a single port (8090 by default). It starts one small <strong>worker</strong> process per instance, and every instance is reachable through the controller under <code>/instance/&lt;name&gt;/</code>. The Minecraft servers themselves are separate processes that a worker starts and stops.</p>
+<p>Restarting the panel does not change a server's settings, and stopping a server never stops the panel. Everything is plain Node.js with no framework and no database, and nothing is loaded from a third party.</p>
 
-  <section id="instances">
-    <h2>Instances</h2>
-    <p>Create an instance with the <code>+</code> button. Pick a name, a server type, a Minecraft version and a port. meowmarism downloads and installs everything.</p>
-    <table>
-      <thead><tr><th>Type</th><th>Notes</th></tr></thead>
-      <tbody>
-        <tr><td>Vanilla</td><td>The official server jar.</td></tr>
-        <tr><td>Paper, Purpur</td><td>Latest build for the chosen version. Uses plugins.</td></tr>
-        <tr><td>Fabric</td><td>Pick the loader version.</td></tr>
-        <tr><td>Forge, NeoForge</td><td>Pick the loader version. The installer runs for you (needs Java).</td></tr>
-      </tbody>
-    </table>
-    <p>New servers get the meowmarism icon and the MOTD <code>hosted by meowmarism :3</code>. Both can be changed per server: the icon on the Settings page, the MOTD in <code>server.properties</code>. You can also let a server start automatically when the panel starts.</p>
-    <p>Instances live in <code>~/meowmarism/instances/&lt;name&gt;</code> and their backups in <code>~/meowmarism/backups/&lt;name&gt;</code>, outside the instance folder.</p>
-  </section>
+<h2>Where to go next</h2>
+<div class="cards">
+  <a class="card-link" href="/docs/getting-started/"><b>Getting started</b><span>Install it and create your first server in a few minutes.</span></a>
+  <a class="card-link" href="/docs/instances/"><b>Instances</b><span>Server types, ports, Java, autostart, removing an instance.</span></a>
+  <a class="card-link" href="/docs/mods/"><b>Mods and plugins</b><span>Search and install from Modrinth, keep everything updated.</span></a>
+  <a class="card-link" href="/docs/accounts/"><b>Accounts and permissions</b><span>Give people exactly the access they need.</span></a>
+  <a class="card-link" href="/docs/https/"><b>HTTPS and internet access</b><span>Put the panel behind Caddy or nginx.</span></a>
+  <a class="card-link" href="/docs/troubleshooting/"><b>Troubleshooting</b><span>Start does nothing, port in use, locked out.</span></a>
+</div>
 
-  <section id="dashboard">
-    <h2>Dashboard</h2>
-    <p>Each instance has its own dashboard: live overview (CPU, RAM, disk and network sampled every 50 ms), performance history, players with moderation, the console with command access, <code>server.properties</code> editing, files, whitelist / operators / bans, backups, the scheduler, automation, an event timeline with an audit log, and system details.</p>
-  </section>
+<h2>Editions</h2>
+<p>These docs describe <strong>meowmarism LITE</strong>, the edition you can install today. <a href="/professional/">meowmarism PROFESSIONAL</a> (Docker isolation, real resource limits, several servers) is planned and builds on the same foundations. LITE stays free and open.</p>
 
-  <section id="mods">
-    <h2>Mods and plugins</h2>
-    <p>The Mods page lists installed jars and lets you enable or disable them. <strong>Browse Modrinth</strong> searches only what is compatible with the instance's Minecraft version and loader, installs the newest release and adds required dependencies automatically. You can also pick a specific version.</p>
-    <p>The <strong>Updates</strong> tab identifies installed files by their hash, so mods you added by hand are found too. Update one or all. Replaced files move to <code>mods-old</code> (or <code>plugins-old</code>) instead of being deleted. Downloads are only accepted from Modrinth's CDN and verified against their SHA-512. Paper and Purpur use the <code>plugins</code> folder.</p>
-  </section>
+<h2>Requirements</h2>
+<table>
+<thead><tr><th>Item</th><th>Needed</th></tr></thead>
+<tbody>
+<tr><td>Operating system</td><td>Linux with systemd (Debian, Ubuntu, Fedora or RHEL based). x64 or arm64.</td></tr>
+<tr><td>Node.js</td><td>18 or newer. The installer installs Node 20 if it is missing.</td></tr>
+<tr><td>Java</td><td>Installed by the panel when a server needs a newer version than the host has.</td></tr>
+<tr><td>Access</td><td>A user with <code>sudo</code> for the install.</td></tr>
+<tr><td>Network</td><td>Port 8090 for the panel, plus the port of each Minecraft server (25565 and up).</td></tr>
+</tbody>
+</table>
 
-  <section id="backups">
-    <h2>Backups</h2>
-    <p>World backups run automatically on an interval you choose. Recent backups are all kept, older ones are thinned to one per hour and then one per day. Restoring puts the current world aside first, so nothing is lost by accident. A backup is also taken before every scheduled restart and before a server upgrade.</p>
-  </section>
-
-  <section id="scheduler">
-    <h2>Scheduler</h2>
-    <p>Plan backups, restarts, stop / start and console commands. A task repeats every day, on chosen weekdays, or every few minutes. Restarts and stops can warn players in chat first. Times use the server's local time. A task that was missed by more than ten minutes (for example during a reboot) is skipped, not run late.</p>
-  </section>
-
-  <section id="startup">
-    <h2>Startup and limits</h2>
-    <p>The Automation page has a Startup card: min and max memory, JVM flags (standard or Aikar's optimized G1GC set), extra JVM arguments, a specific Java binary, and an autostart switch. CPU and hard RAM limits use systemd cgroups when the host supports them, otherwise CPU is limited by pinning to cores. The card tells you what your host can enforce.</p>
-    <p>Changing extra JVM arguments or the Java binary needs the Files permission, because it lets someone run arbitrary code as the panel user.</p>
-  </section>
-
-  <section id="upgrade">
-    <h2>Upgrading a server</h2>
-    <p>The Server software card on the Automation page upgrades Minecraft or the loader. The server has to be stopped. meowmarism takes a world backup, saves the current launch files, installs the new version and keeps your JVM arguments. <strong>Roll back</strong> restores the old files and the world from that backup. Going to an older Minecraft version needs an explicit confirmation because it can damage the world.</p>
-  </section>
-
-  <section id="accounts">
-    <h2>Accounts</h2>
-    <p>The installer creates the owner account before the service starts, so the panel is never reachable without a login. More accounts are created under Manage users with a preset (Viewer, Operator, Manager, Administrator) or individual permissions:</p>
-    <ul>
-      <li><strong>Per instance:</strong> view, console and players, start / stop, files, mods, backups, settings, remove. Set a default for all instances and override it per instance.</li>
-      <li><strong>Panel-wide:</strong> manage users, create instances, update the panel.</li>
-    </ul>
-    <p>Permissions are enforced by the controller and again by each worker. Failed logins are throttled per IP and username.</p>
-  </section>
-
-  <section id="updates">
-    <h2>Updating the panel</h2>
-    <p>The Update page shows the installed and the newest release and updates in place. By default all Minecraft servers must be stopped first; this can be switched off on the Settings page, in which case running servers are stopped briefly and started again. Before switching, the new version is start-tested on a spare port, and the old version stays on disk until the new one has run healthily. A version that fails the test or keeps crashing is rolled back automatically.</p>
-  </section>
-
-  <section id="https">
-    <h2>HTTPS and internet access</h2>
-    <p>The panel speaks plain HTTP. For anything reachable from the internet, put it behind a reverse proxy that terminates HTTPS, let the panel listen on localhost only, and tell it a proxy is in front:</p>
-    <pre>MEOWMARISM_HOST=127.0.0.1 MEOWMARISM_TRUST_PROXY=1 bash install.sh</pre>
-    <p>Caddy:</p>
-    <pre>panel.example.com {
-    reverse_proxy 127.0.0.1:8090
-}</pre>
-    <p>nginx:</p>
-    <pre>location / {
-    proxy_pass http://127.0.0.1:8090;
-    proxy_set_header Host $host;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_http_version 1.1;
-    proxy_buffering off;
-}</pre>
-    <p>With the proxy setting on, the session cookie is <code>Secure</code>, HSTS is sent and login throttling uses the real client IP. Only enable it when a proxy really sets those headers. The panel warns you when it is opened over plain HTTP on a public address.</p>
-  </section>
-
-  <section id="config">
-    <h2>Configuration</h2>
-    <table>
-      <thead><tr><th>Variable</th><th>Default</th><th>Purpose</th></tr></thead>
-      <tbody>
-        <tr><td><code>CONTROLLER_PORT</code></td><td><code>8090</code></td><td>Port the panel listens on</td></tr>
-        <tr><td><code>WORKER_PORT_BASE</code></td><td><code>9090</code></td><td>First internal port for workers (loopback only)</td></tr>
-        <tr><td><code>MEOWMARISM_HOST</code></td><td><code>0.0.0.0</code></td><td>Address the panel listens on</td></tr>
-        <tr><td><code>MEOWMARISM_TRUST_PROXY</code></td><td>off</td><td>Trust <code>X-Forwarded-*</code> headers from a reverse proxy</td></tr>
-        <tr><td><code>MEOWMARISM_DATA_DIR</code></td><td><code>~/meowmarism</code></td><td>Where instances and backups are stored</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="uninstall">
-    <h2>Uninstall</h2>
-    <p>Run the installer again and choose <code>Remove</code>. It lists what will be deleted and asks you to type <code>remove</code>. Your instances, backups and accounts are only deleted if you additionally type <code>delete everything</code>.</p>
-  </section>
-
-  <p style="margin-top:44px">Source, issues and releases are on <a href="https://github.com/meowmarism-official/meowmarism-lite" target="_blank" rel="noopener">GitHub</a>.</p>
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
 </div>
 <script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
 </body>
 </html>

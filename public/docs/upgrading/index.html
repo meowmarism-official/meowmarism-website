@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>Upgrading a server - meowmarism docs</title>
+<meta name="description" content="Upgrade Minecraft or the loader with a backup and a way back.">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/docs.css">
+</head>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>Upgrading a server</h1>
+<p class="lead">Move a server to a newer Minecraft or loader version and undo it if needed.</p>
+
+<p>On the instance's <strong>Manage</strong> page, the <strong>Server software</strong> card shows what is installed and offers <strong>Upgrade...</strong>. The Minecraft server must be stopped.</p>
+
+<h2>What happens</h2>
+<ol class="steps">
+<li><strong>Backup</strong><p>A world backup is taken first. If it fails, nothing is changed.</p></li>
+<li><strong>Launch files saved</strong><p>The current jar, <code>run.sh</code> and JVM arguments are copied into <code>.upgrade/</code> inside the instance.</p></li>
+<li><strong>New version installed</strong><p>Your JVM arguments are kept. If the new version needs a newer Java, it is installed for you.</p></li>
+<li><strong>Panel restarted</strong><p>The instance's panel restarts so it knows the new version. The server is not started automatically.</p></li>
+</ol>
+
+<h2>Rolling back</h2>
+<p><strong>Roll back</strong> restores the saved launch files and the world from the backup taken before the upgrade. Everything played after the upgrade is lost, and the dialog says so before you confirm.</p>
+
+<h2>Going to an older version</h2>
+<p>Older Minecraft versions can damage a world that was already opened by a newer one. The panel therefore asks for an explicit confirmation before it allows it.</p>
+
+<h2>Permissions</h2>
+<p>Upgrading needs both <em>settings</em> and <em>files</em> on the instance.</p>
+
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
+</div>
+<script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
+</body>
+</html>

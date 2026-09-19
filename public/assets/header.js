@@ -1,8 +1,9 @@
 // Shared top navigation, injected on every page so the markup lives in one place.
 (() => {
   const links = [
+    { href: '/lite/', label: 'LITE' },
+    { href: '/professional/', label: 'PROFESSIONAL' },
     { href: '/docs/', label: 'Docs' },
-    { href: '/setup-guide/', label: 'Setup guide' },
     { href: 'https://github.com/meowmarism-official/meowmarism-lite/releases', label: 'Releases', external: true },
     { href: 'https://github.com/meowmarism-official', label: 'GitHub', external: true },
   ];
@@ -22,6 +23,6 @@
   const here = location.pathname.replace(/\/?$/, '/');
   const nav = document.createElement('header');
   nav.className = 'topnav';
-  nav.innerHTML = `<div class="topnav-in"><a class="logo" href="/" aria-label="meowmarism"><img src="/assets/favicon.svg" alt=""></a><nav>${links.map((l) => `<a href="${l.href}"${l.external ? ' target="_blank" rel="noopener"' : ''}${!l.external && here === l.href ? ' class="on"' : ''}>${l.label}${l.external ? '<svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><polyline points="8 7 17 7 17 16"/></svg>' : ''}</a>`).join('')}</nav></div>`;
+  nav.innerHTML = `<div class="topnav-in"><a class="logo" href="/" aria-label="meowmarism"><img src="/assets/favicon.svg" alt=""></a><nav>${links.map((l) => `<a href="${l.href}"${l.external ? ' target="_blank" rel="noopener"' : ''}${!l.external && (here === l.href || (l.href === '/docs/' && here.startsWith('/docs/'))) ? ' class="on"' : ''}>${l.label}${l.external ? '<svg viewBox="0 0 24 24"><path d="M7 17L17 7"/><polyline points="8 7 17 7 17 16"/></svg>' : ''}</a>`).join('')}</nav></div>`;
   document.body.insertBefore(nav, document.body.firstChild);
 })();

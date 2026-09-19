@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>Backups - meowmarism docs</title>
+<meta name="description" content="Automatic world backups, retention and restoring.">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/docs.css">
+</head>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>Backups</h1>
+<p class="lead">Automatic world backups with sensible retention and a restore that never destroys your current world.</p>
+
+<h2>Automatic backups</h2>
+<p>A backup of the <code>world</code> folder runs on the interval you set (hours) and is kept up to a maximum count. The <strong>Backups</strong> page and the instance's <strong>Automation</strong> page hold the settings. A backup is also taken before every scheduled restart and before a server upgrade.</p>
+
+<h2>Retention</h2>
+<p>Recent backups are all kept. Older ones are thinned to one per hour after three hours, and to one per day after a day, so many days fit without piling up near-identical copies. The maximum count still applies on top.</p>
+
+<h2>Manual backups</h2>
+<p>Press <strong>Back up now</strong> at any time, also while the server is running. The panel pauses saving briefly so the copy is consistent.</p>
+
+<h2>Restoring</h2>
+<p>Restore a backup with the restore button. The Minecraft server is stopped, your <strong>current world is moved aside</strong> (not deleted) and the backup is extracted. If extraction fails, the previous world is put back.</p>
+
+<h2>Where they are</h2>
+<pre>~/meowmarism/backups/&lt;instance&gt;/world-2026-01-01T04-00-00-000Z.tar.zst</pre>
+<p>Backups are outside the instance folder, so they survive when you delete an instance (unless you choose to delete them too). They use zstd compression when it is installed, otherwise gzip.</p>
+
+<div class="callout warn"><b>What is not covered</b><p>Only the <code>world</code> folder is backed up. Servers that keep separate world folders (some Paper setups) need those backed up another way. Backups also need at least 2 GB of free disk space.</p></div>
+
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
+</div>
+<script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
+</body>
+</html>

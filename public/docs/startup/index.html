@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>Startup, Java and limits - meowmarism docs</title>
+<meta name="description" content="Memory, JVM flags, Java versions and CPU and RAM limits.">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/docs.css">
+</head>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>Startup, Java and limits</h1>
+<p class="lead">Control how the Minecraft server is launched, and keep it from taking over the machine.</p>
+
+<p>Open an instance, then <strong>Manage</strong>, then the <strong>Startup</strong> card. Changes apply the next time the server starts.</p>
+
+<h2>Memory and flags</h2>
+<table>
+<thead><tr><th>Setting</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Min / max memory</td><td>The JVM heap (<code>-Xms</code> and <code>-Xmx</code>). Leave room for the operating system and other instances.</td></tr>
+<tr><td>JVM flags</td><td><em>Standard</em> uses only the memory flags. <em>Aikar's flags</em> is a well-known optimized G1GC set for Minecraft.</td></tr>
+<tr><td>Extra JVM arguments</td><td>Anything else, each starting with <code>-</code>.</td></tr>
+<tr><td>Autostart</td><td>Start this server when the panel starts.</td></tr>
+</tbody>
+</table>
+<p>The values shown come from the server's existing <code>user_jvm_args.txt</code>. Nothing is rewritten until you save a maximum memory value.</p>
+
+<h2>Java versions</h2>
+<p>Minecraft needs a minimum Java version, and it rises over time.</p>
+<table>
+<thead><tr><th>Minecraft</th><th>Java</th></tr></thead>
+<tbody>
+<tr><td>26.x</td><td>25</td></tr>
+<tr><td>1.20.5 and newer</td><td>21</td></tr>
+<tr><td>1.18 to 1.20.4</td><td>17</td></tr>
+<tr><td>1.17</td><td>16</td></tr>
+<tr><td>1.16 and older</td><td>8</td></tr>
+</tbody>
+</table>
+<p>When you create an instance, or upgrade one to a version that needs more, meowmarism checks the host. If the system Java is too old it downloads the right Temurin runtime into <code>~/meowmarism/java/&lt;version&gt;</code> and sets it for that instance. Before every start the panel checks again and shows a clear message instead of failing silently. For instances created earlier, the Startup card shows <strong>Install Java</strong> when it is needed.</p>
+<div class="callout note"><b>Linux only</b><p>Automatic Java installation supports Linux on x64 and arm64. You can always point an instance to a Java binary of your own in the Startup card.</p></div>
+
+<h2>CPU and RAM limits</h2>
+<p>Set a CPU limit in cores and a hard RAM limit in MB. How they are enforced depends on the host, and the card tells you which case applies:</p>
+<ul>
+<li><strong>systemd user cgroups available:</strong> real limits for CPU and memory.</li>
+<li><strong>Only <code>taskset</code> available:</strong> the server is pinned to that many CPU cores. RAM is limited by the JVM heap only.</li>
+<li><strong>Neither:</strong> limits cannot be enforced on this host.</li>
+</ul>
+
+<h2>Permissions</h2>
+<p>Memory, flags, limits and autostart need the <em>settings</em> permission. Extra JVM arguments and a custom Java binary need <em>files</em> as well, because they allow running arbitrary code as the panel user.</p>
+
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
+</div>
+<script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
+</body>
+</html>

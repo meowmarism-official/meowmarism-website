@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>The dashboard - meowmarism docs</title>
+<meta name="description" content="What every page of an instance shows and does.">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/docs.css">
+</head>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>The dashboard</h1>
+<p class="lead">Every instance has its own dashboard. This is what each page is for.</p>
+
+<table>
+<thead><tr><th>Page</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Overview</td><td>Live status, CPU, memory, disk and network sampled every 50 ms, players online, uptime, start, stop and restart.</td></tr>
+<tr><td>Performance</td><td>Charts for CPU, RAM, disk, network and players over 1 minute up to 7 days.</td></tr>
+<tr><td>Players</td><td>Who is online, session history, kick, ban, op and gamemode per player.</td></tr>
+<tr><td>Console</td><td>Live server output and commands, filter, download log, command suggestions.</td></tr>
+<tr><td>Settings</td><td>Edit <code>server.properties</code> with descriptions, and the server icon.</td></tr>
+<tr><td>Mods</td><td>Installed mods or plugins, Modrinth search and updates.</td></tr>
+<tr><td>Files</td><td>Browse, preview, upload and delete files of the instance.</td></tr>
+<tr><td>Access</td><td>Whitelist, operators and bans.</td></tr>
+<tr><td>Backups</td><td>Back up now, restore, delete, retention settings.</td></tr>
+<tr><td>Scheduler</td><td>Timed backups, restarts, start and stop, console commands.</td></tr>
+<tr><td>Manage</td><td>Startup options, limits, server software upgrades, deleting the instance.</td></tr>
+<tr><td>Automation</td><td>Daily restart, crash restart, sleep mode, console buffer.</td></tr>
+<tr><td>Events and audit</td><td>Timeline of everything that happened and every panel action.</td></tr>
+<tr><td>System</td><td>Host and process details.</td></tr>
+</tbody>
+</table>
+
+<h2>Performance history</h2>
+<p>Ranges are 1 minute, 5 minutes, 15 minutes, 1 hour, 24 hours and 7 days. History is saved once a minute and when the panel stops, so it survives panel restarts. While the server is off the charts show zero, and time when the panel itself was not running is drawn as a flat zero line. Drag on a chart to zoom, double click to return to live.</p>
+
+<h2>Console</h2>
+<p>Commands typed here go straight to the server. Anyone with the <em>console</em> permission can run any server command, so give it carefully. See <a href="/docs/accounts/">Accounts and permissions</a>.</p>
+
+<h2>Files</h2>
+<p>The file manager works inside the instance folder only. Deleting a file or folder asks for confirmation with a dialog that names the path.</p>
+
+<h2>Events and audit</h2>
+<p>The timeline records starts, stops, crashes, restarts, lag warnings, settings changes and player joins. The audit log records every action taken in the panel.</p>
+
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
+</div>
+<script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
+</body>
+</html>

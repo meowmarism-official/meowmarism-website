@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>Getting started - meowmarism docs</title>
+<meta name="description" content="Install meowmarism LITE and create your first server.">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/docs.css">
+</head>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>Getting started</h1>
+<p class="lead">From an empty Linux server to a running Minecraft server in a few minutes.</p>
+
+<ol class="steps">
+<li><strong>Install</strong>
+<p>On a Linux server run:</p>
+<pre>curl -fsSL https://raw.githubusercontent.com/meowmarism-official/meowmarism-lite/master/install.sh | bash</pre>
+<p>The script downloads the latest tagged release (not the development branch), installs it to <code>/opt/meowmarism</code> and sets up a systemd service. Nothing needs to be installed beforehand, not even Node.js.</p>
+<div class="callout tip"><b>Tip</b><p>Prefer to read the script first? Download it with <code>curl -fsSLO …/install.sh</code>, read it, then run <code>bash install.sh</code>.</p></div>
+</li>
+<li><strong>Set the owner account</strong>
+<p>Before anything is started the installer asks for a username and a password (twice, minimum 8 characters). The account is written before the service starts, so the panel is never reachable without a login.</p>
+</li>
+<li><strong>Open the panel</strong>
+<p>The installer prints the address, detected from the machine: <code>http://your-server-ip:8090</code>. Log in with the owner account.</p>
+</li>
+<li><strong>Create an instance</strong>
+<p>Click the <code>+</code> button. Pick a name, a server type, a Minecraft version and a port. meowmarism downloads and installs everything, including the right Java version if the host does not have it. See <a href="/docs/instances/">Instances</a>.</p>
+</li>
+<li><strong>Start it</strong>
+<p>Open the instance and press <strong>Start</strong>. The console shows the server starting, and the overview turns green when it is ready.</p>
+</li>
+</ol>
+
+<div class="callout note"><b>Note</b><p>Reaching the panel from the internet? Read <a href="/docs/https/">HTTPS and internet access</a> first. The panel speaks plain HTTP by itself.</p></div>
+
+<h2>What was installed</h2>
+<table>
+<thead><tr><th>Where</th><th>What</th></tr></thead>
+<tbody>
+<tr><td><code>/opt/meowmarism</code></td><td>The panel itself</td></tr>
+<tr><td><code>/etc/systemd/system/meowmarism.service</code></td><td>The service that keeps it running</td></tr>
+<tr><td><code>~/meowmarism/instances</code></td><td>Your Minecraft servers</td></tr>
+<tr><td><code>~/meowmarism/backups</code></td><td>World backups</td></tr>
+<tr><td><code>~/.meowmarism-*.json</code></td><td>Accounts, instance list, settings</td></tr>
+</tbody>
+</table>
+
+<h2>Next steps</h2>
+<ul>
+<li>Add people with limited access: <a href="/docs/accounts/">Accounts and permissions</a></li>
+<li>Install mods: <a href="/docs/mods/">Mods and plugins</a></li>
+<li>Plan restarts and backups: <a href="/docs/scheduler/">Scheduler and automation</a></li>
+</ul>
+
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
+</div>
+<script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
+</body>
+</html>

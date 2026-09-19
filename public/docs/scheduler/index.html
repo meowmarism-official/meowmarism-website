@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>Scheduler and automation - meowmarism docs</title>
+<meta name="description" content="Plan backups, restarts and commands, plus crash handling and sleep mode.">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/docs.css">
+</head>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>Scheduler and automation</h1>
+<p class="lead">Do things on a schedule, and let the panel recover from crashes on its own.</p>
+
+<h2>Scheduled tasks</h2>
+<p>Open <strong>Scheduler</strong> inside an instance and press <strong>Add task</strong>. A task has an action and a schedule.</p>
+<table>
+<thead><tr><th>Action</th><th>What happens</th></tr></thead>
+<tbody>
+<tr><td>Backup</td><td>Takes a world backup.</td></tr>
+<tr><td>Restart</td><td>Restarts the server. Optionally warns players in chat first.</td></tr>
+<tr><td>Stop / Start</td><td>Stops or starts the server. Stop can warn players first.</td></tr>
+<tr><td>Console command</td><td>Sends a command to the server, for example <code>say Back in 5 minutes</code>.</td></tr>
+</tbody>
+</table>
+<table>
+<thead><tr><th>Schedule</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Every day</td><td>At a time you choose.</td></tr>
+<tr><td>On weekdays</td><td>Only on the days you tick, at a time you choose.</td></tr>
+<tr><td>Every few minutes</td><td>Every 5 minutes up to every 7 days.</td></tr>
+</tbody>
+</table>
+<p>Times use the <strong>server's local time</strong>. The table shows the last and the next run, and <strong>Run now</strong> starts a task immediately.</p>
+<div class="callout note"><b>Missed tasks</b><p>A task that was due while the panel was not running (for example during a reboot) is skipped if it is more than ten minutes late, not run at a surprising moment.</p></div>
+
+<h3>Permissions</h3>
+<p>Creating a task needs the <em>settings</em> permission plus the permission of its action: <em>backups</em> for backups, <em>power</em> for restart, stop and start, <em>console</em> for commands. This keeps someone with settings access from running console commands.</p>
+
+<h2>Daily auto-restart</h2>
+<p>On the <strong>Automation</strong> page: restart once a day at a chosen time, with a chat countdown and a backup beforehand.</p>
+
+<h2>Crash auto-restart</h2>
+<p>Restarts the server after an unexpected crash after a short delay. It stops trying after too many crashes in an hour so a broken mod cannot loop forever.</p>
+
+<h2>Sleep mode</h2>
+<p>Stops the server when nobody has been online for the chosen number of minutes and starts it again as soon as someone tries to join. The server stays visible in the multiplayer list while it sleeps.</p>
+
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
+</div>
+<script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
+</body>
+</html>

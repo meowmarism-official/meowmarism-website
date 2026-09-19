@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>Configuration - meowmarism docs</title>
+<meta name="description" content="Environment variables, folders and files.">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/docs.css">
+</head>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>Configuration</h1>
+<p class="lead">What can be configured and where everything is stored.</p>
+
+<h2>Environment variables</h2>
+<p>Set them on the systemd service, or when running the installer.</p>
+<table>
+<thead><tr><th>Variable</th><th>Default</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td><code>CONTROLLER_PORT</code></td><td><code>8090</code></td><td>Port the panel listens on</td></tr>
+<tr><td><code>WORKER_PORT_BASE</code></td><td><code>9090</code></td><td>First internal port for instance panels (loopback only)</td></tr>
+<tr><td><code>MEOWMARISM_HOST</code></td><td><code>0.0.0.0</code></td><td>Address the panel listens on</td></tr>
+<tr><td><code>MEOWMARISM_TRUST_PROXY</code></td><td>off</td><td>Trust <code>X-Forwarded-*</code> headers from a reverse proxy</td></tr>
+<tr><td><code>MEOWMARISM_DATA_DIR</code></td><td><code>~/meowmarism</code></td><td>Where instances, backups and Java runtimes are stored</td></tr>
+</tbody>
+</table>
+<p>The installer also reads <code>MEOWMARISM_DIR</code> (install folder, default <code>/opt/meowmarism</code>), <code>MEOWMARISM_SERVICE</code> (service name) and <code>MEOWMARISM_PORT</code>.</p>
+
+<h2>Files in your home directory</h2>
+<table>
+<thead><tr><th>File</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><code>.meowmarism-controller-users.json</code></td><td>Accounts, with scrypt password hashes, mode 0600</td></tr>
+<tr><td><code>.meowmarism-instances.json</code></td><td>The instance list</td></tr>
+<tr><td><code>.meowmarism-controller-settings.json</code></td><td>Panel settings</td></tr>
+<tr><td><code>.meowmarism-sessions.json</code></td><td>Login sessions, stored hashed</td></tr>
+</tbody>
+</table>
+
+<h2>Per instance</h2>
+<table>
+<thead><tr><th>File</th><th>Contents</th></tr></thead>
+<tbody>
+<tr><td><code>panel-config.json</code></td><td>Instance settings: backups, automation, startup, schedule</td></tr>
+<tr><td><code>panel-history.json</code></td><td>Events, audit log and player history</td></tr>
+<tr><td><code>panel-metrics.json</code></td><td>Saved performance history</td></tr>
+<tr><td><code>.upgrade/</code></td><td>Saved launch files for rolling back an upgrade</td></tr>
+</tbody>
+</table>
+
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
+</div>
+<script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
+</body>
+</html>

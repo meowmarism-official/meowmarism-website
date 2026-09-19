@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>Troubleshooting - meowmarism docs</title>
+<meta name="description" content="Common problems and how to fix them.">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/docs.css">
+</head>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>Troubleshooting</h1>
+<p class="lead">The problems people run into most, and what to do about each.</p>
+
+<h2>Pressing Start does nothing</h2>
+<p>Open the instance's <strong>Console</strong>. The panel writes why the server did not start. The usual reasons:</p>
+<ul>
+<li><strong>Wrong Java version.</strong> A message like <em>needs Java 25, but Java 21 is installed</em>. Open <strong>Manage</strong>, then <strong>Startup</strong>, and press <strong>Install Java</strong>. New instances get the right Java automatically.</li>
+<li><strong>Port in use.</strong> See below.</li>
+<li><strong>EULA or files missing.</strong> Check the console output.</li>
+</ul>
+<div class="callout tip"><b>Tip</b><p>If a server crashes right after starting, the crash appears in the console and on the Events page with the last output.</p></div>
+
+<h2>The port is already in use</h2>
+<p>Another instance or another program uses the Minecraft port. Change <code>server-port</code> on the <strong>Settings</strong> page, or stop the other program. <code>ss -ltnp | grep 25565</code> shows what listens on a port.</p>
+
+<h2>The update will not start</h2>
+<p>By default all Minecraft servers must be stopped first, and the message names the running ones. Stop them, or switch the rule off on the panel's Settings page. See <a href="/docs/updating/">Updating meowmarism</a>.</p>
+
+<h2>I cannot reach the panel from another computer</h2>
+<ul>
+<li>Check that the port (8090) is open in the firewall.</li>
+<li>Check that the panel is not set to listen on localhost only (<code>MEOWMARISM_HOST</code>).</li>
+<li>Check the service: <code>sudo systemctl status meowmarism</code> and <code>journalctl -u meowmarism</code>.</li>
+</ul>
+
+<h2>"Too many attempts"</h2>
+<p>Login protection has locked your IP and username for a short while after several wrong passwords. Wait for the time shown, then try again. It resets after a successful login.</p>
+
+<h2>I forgot a member's password</h2>
+<p>Open <strong>Manage users</strong>, edit the account and set a new password.</p>
+
+<h2>I forgot the owner password</h2>
+<p>There is no reset button for the owner yet. As the user that runs the service, stop it, replace the owner and start it again. Members and instances are kept:</p>
+<pre>sudo systemctl stop meowmarism
+cd /opt/meowmarism/panel
+node -e "const fs=require('fs'),os=require('os'),path=require('path');const f=path.join(os.homedir(),'.meowmarism-controller-users.json');fs.writeFileSync(f,JSON.stringify(JSON.parse(fs.readFileSync(f,'utf8')).filter(u=>u.role!=='owner')),{mode:0o600});console.log(require('./lib/db.js').createUserStore(f).upsertOwner('NEWNAME','NEWPASSWORD'))"
+sudo systemctl start meowmarism</pre>
+<p>It prints <code>true</code> when the new owner was created. Run it as the same user as the service, because the accounts file lives in that user's home directory.</p>
+
+<h2>Still stuck?</h2>
+<p>Look at the console of the instance and <code>journalctl -u meowmarism</code>, then open an issue on <a href="https://github.com/meowmarism-official/meowmarism-lite/issues" target="_blank" rel="noopener">GitHub</a> with the message you see.</p>
+
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
+</div>
+<script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
+</body>
+</html>

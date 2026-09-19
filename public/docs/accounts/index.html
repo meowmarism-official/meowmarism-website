@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<meta name="theme-color" content="#06090f">
+<title>Accounts and permissions - meowmarism docs</title>
+<meta name="description" content="Owner, members, presets and per-instance permissions.">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/docs.css">
+</head>
+<body class="docs">
+<div class="docs-shell">
+  <aside class="docs-side" id="docsNav" aria-label="Documentation"></aside>
+  <main class="docs-main">
+    <article id="doc">
+<h1>Accounts and permissions</h1>
+<p class="lead">People get exactly the permissions you choose, per instance, and the panel enforces them twice.</p>
+
+<h2>The owner</h2>
+<p>The owner is created by the installer and always has full access. The owner account cannot be edited or deleted by anyone else.</p>
+
+<h2>Members</h2>
+<p>Add people under <strong>Manage users</strong> with the <code>+</code> button. Pick a preset or set individual permissions.</p>
+<table>
+<thead><tr><th>Preset</th><th>On instances</th><th>Panel-wide</th></tr></thead>
+<tbody>
+<tr><td>Viewer</td><td>view</td><td>none</td></tr>
+<tr><td>Operator</td><td>view, console, power</td><td>none</td></tr>
+<tr><td>Manager</td><td>Operator plus files, mods, backups, settings</td><td>create instances</td></tr>
+<tr><td>Administrator</td><td>Manager plus remove</td><td>manage users, create instances, update</td></tr>
+</tbody>
+</table>
+
+<h2>Permissions in detail</h2>
+<table>
+<thead><tr><th>Permission</th><th>Allows</th></tr></thead>
+<tbody>
+<tr><td>view</td><td>See the instance and its dashboard</td></tr>
+<tr><td>console</td><td>Use the console and manage players. This lets someone run any server command.</td></tr>
+<tr><td>power</td><td>Start, stop, restart</td></tr>
+<tr><td>files</td><td>File manager, extra JVM arguments, Java binary, upgrades</td></tr>
+<tr><td>mods</td><td>Install, update and toggle mods and plugins</td></tr>
+<tr><td>backups</td><td>Create, restore and delete backups</td></tr>
+<tr><td>settings</td><td>Server settings, startup options, scheduler, automation</td></tr>
+<tr><td>remove</td><td>Delete the instance</td></tr>
+</tbody>
+</table>
+<p>Panel-wide permissions are <strong>users</strong> (manage accounts and panel settings), <strong>create</strong> (create instances) and <strong>update</strong> (update the panel).</p>
+
+<h2>Default and per instance</h2>
+<p>Each account has a default set for all instances and can be overridden for individual instances. Someone with no permission on an instance does not see it in the list.</p>
+
+<h2>Rules</h2>
+<ul>
+<li>An account with <em>manage users</em> can only be changed by the owner.</li>
+<li>An administrator cannot hand out the right to manage users.</li>
+<li>The controller checks every request, and each worker checks it again, so a change on one side cannot bypass the other.</li>
+</ul>
+
+<h2>Login protection</h2>
+<p>Failed logins are throttled per IP address and username: after three failures the wait grows (5 seconds, 10, 20 and so on, up to 15 minutes), and 20 failures from one IP in ten minutes lock that IP for 15 minutes. While locked, even the right password is refused until the time is up. Sessions survive panel restarts and updates.</p>
+
+    </article>
+    <div id="docsPager"></div>
+  </main>
+  <aside class="docs-toc" id="docsToc" aria-label="On this page"></aside>
+</div>
+<script src="/assets/header.js" defer></script>
+<script src="/assets/docs.js" defer></script>
+</body>
+</html>
