@@ -27,7 +27,7 @@
 <tr><td>Console</td><td>Live server output and commands, filter, download log, command suggestions.</td></tr>
 <tr><td>Settings</td><td>Edit <code>server.properties</code> with descriptions, and the server icon.</td></tr>
 <tr><td>Mods</td><td>Installed mods or plugins, Modrinth search and updates.</td></tr>
-<tr><td>Files</td><td>Browse, preview, upload and delete files of the instance.</td></tr>
+<tr><td>Files</td><td>Browse, edit, download, upload and delete files of the instance.</td></tr>
 <tr><td>Access</td><td>Whitelist, operators and bans.</td></tr>
 <tr><td>Backups</td><td>Back up now, restore, delete, retention settings.</td></tr>
 <tr><td>Scheduler</td><td>Timed backups, restarts, start and stop, console commands.</td></tr>
@@ -45,7 +45,17 @@
 <p>Commands typed here go straight to the server. Anyone with the <em>console</em> permission can run any server command, so give it carefully. See <a href="/docs/accounts/">Accounts and permissions</a>.</p>
 
 <h2>Files</h2>
-<p>The file manager works inside the instance folder only. Deleting a file or folder asks for confirmation with a dialog that names the path.</p>
+<p>The file manager works inside the instance folder only. Click a folder to open it. For a file, press <strong>Edit</strong> to open it in the built-in editor, or <strong>Download</strong>. Deleting a file or folder asks for confirmation with a dialog that names the path.</p>
+
+<h3>The editor</h3>
+<ul>
+<li>Text files up to 2 MB open in the editor. Binary files such as jars, archives, images and world data can only be downloaded.</li>
+<li>Line numbers, the cursor position and colors for <code>.properties</code>, <code>.json</code>, <code>.yml</code> and <code>.toml</code> files.</li>
+<li><strong>Ctrl+S</strong> (or <strong>Save</strong>) writes the file. The write is atomic, and the file's permissions and line endings (LF or CRLF) are kept.</li>
+<li>If the file changed on the server after you opened it, the editor asks before overwriting it.</li>
+<li>Saving JSON that is not valid asks first. Closing with unsaved changes asks first.</li>
+<li>Most server files only take effect after a restart.</li>
+</ul>
 
 <h2>Events and audit</h2>
 <p>The timeline records starts, stops, crashes, restarts, lag warnings, settings changes and player joins. The audit log records every action taken in the panel.</p>

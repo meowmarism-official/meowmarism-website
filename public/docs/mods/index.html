@@ -24,7 +24,18 @@
 <p>Lists every jar in the folder and lets you disable or enable it. Disabled files move to <code>disabled_mods</code> and are not loaded. Changes take effect after a server restart.</p>
 
 <h2>Browse Modrinth</h2>
-<p>The search only shows projects that are compatible with the instance's Minecraft version and loader. <strong>Install</strong> takes the newest release and adds required dependencies automatically. <strong>Versions</strong> lets you pick a specific version instead.</p>
+<p>The search only shows projects that are compatible with the instance's Minecraft version and loader. Every result is a card with the icon, downloads, followers, categories and when it was last updated. Sort by relevance, downloads, followers, newest or recently updated.</p>
+<p><strong>Install</strong> on a card takes the newest release and adds required dependencies automatically. Click a card to open the project: its description, gallery, the compatible versions (each with its own <strong>Install</strong>), the license, the environment (client and server), the team and links to the source, issues and Modrinth.</p>
+
+<div class="callout warn"><b>Few downloads</b><p>Projects with fewer than 50,000 downloads carry a warning on the card and in the detail view. Fewer people have tried them, so read the description and look at the source code before you install one.</p></div>
+
+<h2>Other project types</h2>
+<p>Above the results you can switch between mods (or plugins), datapacks, resource packs, shaders and modpacks.</p>
+<ul>
+<li><strong>Datapacks</strong> are installed into the <code>datapacks</code> folder of the world and load after a restart or <code>/reload</code>. They also work on vanilla servers.</li>
+<li><strong>Resource packs, shaders and modpacks</strong> are used by players, not by the server. You can browse them here and open them on Modrinth, but they cannot be installed on the server.</li>
+</ul>
+<p>Images in the search and the detail view are fetched through the panel. Your browser never contacts Modrinth.</p>
 
 <h2>Updates</h2>
 <p>Installed files are identified by their hash, so mods you added by hand are found too. The tab shows:</p>
