@@ -52,7 +52,7 @@ body.product{font-size:15px;line-height:1.65;}
 .phero h1 .line{display:block;width:max-content;position:relative;z-index:2;transform:translate(calc(var(--t)*-.0714),calc(var(--t)*-.0714));animation:textUp .9s .4s cubic-bezier(.16,.8,.25,1) backwards;}
 .phero h1 .outline{position:absolute;left:0;top:0;z-index:1;color:transparent;transform:none;-webkit-text-stroke:1px rgba(var(--accent-rgb),.55);animation:outFade .9s .4s ease backwards;}
 .phero h1 .outline.mid{transform:translate(calc(var(--t)*-.0357),calc(var(--t)*-.0357));animation-name:outMove;animation-timing-function:cubic-bezier(.16,.8,.25,1);}
-.phero h1 .wm .ed{position:absolute;left:calc(100% - 8px);top:2.2em;margin-left:.5em;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:.15em;font-weight:760;letter-spacing:.14em;color:var(--accent);line-height:1;}
+.phero h1 .wm .ed{position:absolute;left:calc(100% - 8px);top:.9em;margin-left:.5em;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:.15em;font-weight:760;letter-spacing:.14em;color:var(--accent);line-height:1;}
 .phero h1 .wm .ed i{display:block;position:relative;z-index:1;font-style:normal;animation:edIn .2s 3s ease backwards;}
 .phero .wave{display:block;width:100%;height:calc(var(--t)*.25);margin-top:calc(var(--t)*-.036);transform:scaleX(0);animation:waveIn .45s .05s cubic-bezier(.25,.7,.2,1) forwards;}
 @keyframes textUp{from{transform:none}}
