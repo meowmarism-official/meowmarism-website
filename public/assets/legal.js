@@ -1,4 +1,4 @@
-// Renders a Markdown legal text (headings, paragraphs, lists, quotes) from a raw GitHub URL.
+// Renders a Markdown legal text (headings, paragraphs, lists, quotes) from a file on this site.
 (() => {
   const root = document.getElementById('legal');
   const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -42,12 +42,12 @@
   }
 
   fetch(root.dataset.src)
-    .then((r) => { if (!r.ok) throw new Error('GitHub responded with ' + r.status); return r.text(); })
+    .then((r) => { if (!r.ok) throw new Error('the server responded with ' + r.status); return r.text(); })
     .then((text) => {
       const { html, toc } = render(text);
       const first = text.split('\n').find((l) => /^Copyright/.test(l)) || '';
       root.innerHTML = `<aside class="ltoc"><b>Sections</b>${toc}</aside><article class="lbody">${first ? `<p class="lmeta">${esc(first)}</p>` : ''}${html}</article>`;
       if (location.hash) { const t = document.querySelector(location.hash); if (t) t.scrollIntoView(); }
     })
-    .catch((err) => { root.innerHTML = `<p class="error">Couldn't load the text from GitHub (${esc(err.message)}). Read it directly on <a href="${root.dataset.gh}" target="_blank" rel="noopener">GitHub</a> instead.</p>`; });
+    .catch((err) => { root.innerHTML = `<p class="error">Couldn't load the text (${esc(err.message)}). Read it directly on <a href="${root.dataset.gh}" target="_blank" rel="noopener">GitHub</a> instead.</p>`; });
 })();
