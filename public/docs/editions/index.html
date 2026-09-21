@@ -37,11 +37,11 @@
 <thead><tr><th></th><th>LITE</th><th>PROFESSIONAL</th></tr></thead>
 <tbody>
 <tr><td>A server runs as</td><td>a process on the host</td><td>a Docker container</td></tr>
-<tr><td>CPU and memory</td><td>Java heap size and process priority</td><td>hard limits for CPU and memory per instance</td></tr>
+<tr><td>CPU and memory</td><td>Java heap size, plus CPU and memory limits through systemd cgroups where the host supports them (CPU core pinning otherwise)</td><td>hard limits for CPU and memory per instance</td></tr>
 <tr><td>Java</td><td>installed and chosen by the panel</td><td>comes with the container image</td></tr>
 <tr><td>Files, mods, backups</td><td colspan="2">the same: plain folders on the host, the same Modrinth, backup and scheduler modules</td></tr>
 <tr><td>Accounts and permissions</td><td colspan="2">the same model</td></tr>
-<tr><td>Price and license</td><td colspan="2">free and open source, same license</td></tr>
+<tr><td>Price and license</td><td colspan="2">free to use, source-available, same license</td></tr>
 </tbody>
 </table>
 <p>Pages in these docs that apply to both editions have no label. Pages for one edition only carry a <strong>LITE</strong> or <strong>PRO</strong> label in the menu.</p>
